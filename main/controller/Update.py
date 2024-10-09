@@ -16,6 +16,5 @@ class UpdateController(UpdateAPIView):
 		instance = self.get_object()
 		serialize = self.get_serializer(instance,data=req.data)
 		serialize.is_valid(raise_exception=True)
-		self.perform_destroy(instance)
 		serialize.save()
 		return Response(serialize.data,status=200)
